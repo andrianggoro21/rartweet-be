@@ -1,4 +1,4 @@
-const { createUserQuery, findUserQuery } = require("../queries/userQuery");
+const { createUserQuery, findUserQuery, findUserQueryAll } = require("../queries/userQuery");
 
 const createUserService = async (name, email, password) => {
     try {
@@ -12,6 +12,16 @@ const createUserService = async (name, email, password) => {
     }
 }
 
+const findUserServiceAll = async () => {
+    try {
+        const res = await findUserQueryAll()
+        return res;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     createUserService,
+    findUserServiceAll
 }

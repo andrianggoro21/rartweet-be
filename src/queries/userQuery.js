@@ -19,6 +19,15 @@ const findUserQuery = async ({id = null, email = null}) => {
     }
 }
 
+const findUserQueryAll = async () => {
+    try {
+        const res = await dbUser.findAll({include: db.tweets});
+        return res;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const createUserQuery = async (name, email, password) => {
     try {
         // const t = await db.sequelize.transaction();
@@ -37,5 +46,6 @@ const createUserQuery = async (name, email, password) => {
 
 module.exports = {
     findUserQuery,
+    findUserQueryAll,
     createUserQuery,
 }

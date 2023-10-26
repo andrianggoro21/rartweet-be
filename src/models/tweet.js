@@ -19,8 +19,8 @@ module.exports = (sequelize, Sequelize) => {
         }
             
     );
-    // branch.associate = (models) => {
-    //     branch.hasMany(models.user, {foreignKey: "branchId"});
-    // }
+    tweets.associate = (models) => {
+        tweets.belongsTo(models.users, {foreignKey: "user_id"});
+    }
     return tweets;
 }
