@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   createUserController,
-} = require("../controllers/tweetController");
+} = require("../controllers/userController");
 
 router.post("/", createUserController);
 

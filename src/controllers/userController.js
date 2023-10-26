@@ -1,4 +1,4 @@
-const { createUserService } = require("../services/tweetService");
+const { createUserService } = require("../services/userService");
 
 const createUserController = async (req, res) => {
     try {

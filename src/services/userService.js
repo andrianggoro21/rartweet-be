@@ -1,4 +1,4 @@
-const { createUserQuery, findUserQuery } = require("../queries/tweetQuery");
+const { createUserQuery, findUserQuery } = require("../queries/userQuery");
 
 const createUserService = async (name, email, password) => {
     try {
