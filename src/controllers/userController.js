@@ -18,6 +18,7 @@ const loginUserController = async (req, res) => {
     try {
         const {email, password} = req.body;
         const result = await loginUserService(email, password);
+        // console.log(result);
         return res.status(200).json({
             message: "login success",
             data: result,

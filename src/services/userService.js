@@ -13,9 +13,10 @@ const createUserService = async (name, email, password) => {
 
 const loginUserService = async (email, password) => {
     try {
-        const check = await findUserQuery({email,password});
-        if (check) throw new Error("Email already exist");
-        return check
+        const check = await findUserQuery({email, password});
+        if (!check) throw new Error("Email atau password salah");
+        const res = await loginUserQuery(email, password)
+        return res
     } catch (err) {
         throw err;
     }
