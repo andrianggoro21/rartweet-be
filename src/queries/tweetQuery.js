@@ -13,6 +13,16 @@ const findUserQuery = async ({id = null, email = null}) => {
             },
         });
 
+const dbTweet = db.tweets
+
+const createTweetQuery = async (user_id, tweet) => {
+    try {
+        const res = await dbTweet.create({
+            user_id,
+            tweet,
+            // date_tweet: new Date()
+               
+        })
         return res;
     } catch (err) {
         throw err;
@@ -38,4 +48,16 @@ const createUserQuery = async (name, email, password) => {
 module.exports = {
     findUserQuery,
     createUserQuery,
+const getTweetQueryAll = async () => {
+    try {
+        const res = await dbTweet.findAll();
+        return res;
+    } catch (err) {
+        throw err
+    }
+};
+
+module.exports = {
+    createTweetQuery,
+    getTweetQueryAll,
 }
