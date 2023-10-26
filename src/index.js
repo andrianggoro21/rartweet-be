@@ -24,7 +24,7 @@ app.use(
 );
 
 const tweetRouter = require('./routers/tweetRouter');
-app.use("/rartweet", tweetRouter);
+app.use("/tweet", tweetRouter);
 
 app.listen(PORT, (req, res) => {
     console.log(`server started on port ${PORT}`);
