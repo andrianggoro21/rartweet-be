@@ -1,5 +1,6 @@
 const { createTweetQuery, getTweetQueryAll } = require("../queries/tweetQuery");
 
+
 const createTweetService = async (user_id, tweet) => {
   try {
     const res = await createTweetQuery(user_id, tweet);

@@ -1,7 +1,9 @@
 const {
   createUserService,
   findUserServiceAll,
+  loginUserService,
 } = require("../services/userService");
+
 
 const createUserController = async (req, res) => {
   try {
@@ -30,7 +32,22 @@ const findUserControllerAll = async (req, res) => {
   }
 };
 
+const loginUserController = async (req, res) => {
+    try {
+        const {email, password} = req.body;
+        const result = await loginUserService(email, password);
+        // console.log(result);
+        return res.status(200).json({
+            message: "login success",
+            data: result,
+        })
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+}
+
 module.exports = {
   createUserController,
   findUserControllerAll,
+  loginUserController
 };
