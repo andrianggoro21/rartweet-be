@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Op } = require("sequelize");
 const dbUser = db.users;
 
 const findUserQuery = async ({ id = null, email = null }) => {
@@ -45,20 +46,22 @@ const createUserQuery = async (name, email, password) => {
   }
 };
 
-const loginUserQuery = async ({ email = null, password = null }) => {
+const loginUserQuery = async (email = null, password = null) => {
   try {
     const params = {};
     // if (id) params.id = id;
+    // if (email) params.name = name;
     if (email) params.email = email;
     if (password) params.password = password;
 
-    const res = await dbUser.findOne({
+    const res = await dbUser.findAll({
       where: {
-        ...params,
-        // password,
+        // ...params,
+        // // password,
+        [Op.or]: {...params,}
       },
     });
-
+    console.log(res);
     return res;
   } catch (err) {
     throw err;
